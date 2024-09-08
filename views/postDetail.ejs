@@ -95,14 +95,17 @@
                 pre.appendChild(button);
 
                 button.addEventListener('click', () => {
-                    navigator.clipboard.writeText(code.textContent).then(() => {
-                        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                        setTimeout(() => {
-                            button.innerHTML = '<i class="fas fa-copy"></i> Copy';
-                        }, 2000);
-                    }).catch(err => {
-                        console.error('Failed to copy code:', err);
-                    });
+                    const textArea = document.createElement('textarea');
+                    textArea.value = code.textContent;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+
+                    button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    setTimeout(() => {
+                        button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                    }, 2000);
                 });
             }
         });
