@@ -62,8 +62,8 @@
 
 <!-- Main Content -->
 <h1 class="text-white text-center">bade diajar naon ayeuna?</h1>
-<section class="custom-container mt-5">
-    <div class="row d-flex justify-content-between">
+<section class="custom-container ">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
       <% posts.forEach(post => { %>
       <div class="col-md-4 mb-4">
         <div class="card blog-post light-mode" onclick="window.location.href='/posts/<%= post.id %>'" style="cursor: pointer;">

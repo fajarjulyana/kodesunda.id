@@ -76,7 +76,7 @@ body {
     align-items: center; /* Untuk membuat posisi card ke tengah secara vertikal */
     height: auto; /* Tinggi container otomatis sesuai konten */
     flex-wrap: wrap; /* Memungkinkan card untuk membungkus jika layar kecil */
-    padding: 20px; /* Padding sekitar container */
+    padding: 15%; /* Padding sekitar container */
 }
 
 /* Style untuk card gambar */
@@ -93,7 +93,7 @@ body {
     color: white;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Pastikan transisi ini ada */
     width: 100%;
-    max-width: 200px;
+    max-width: 400px;
     height: auto;
     padding: 12px 20px;
     margin: 10px;
