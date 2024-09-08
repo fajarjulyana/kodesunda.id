@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= post.title %></title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Prism.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet">
+    <!-- Font Awesome for Copy Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        .code-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .copy-button i {
+            margin-right: 5px;
+        }
+
+        .copy-button:hover {
+            background-color: #0056b3;
+        }
+
+        pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">My Blog</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h1><%= post.title %></h1>
+        <div>
+            <img src="<%= post.thumbnail %>" alt="<%= post.title %> Thumbnail" style="max-width: 100%; height: auto;">
+        </div>
+        <div>
+            <!-- Assuming post.content contains the HTML with <pre><code> elements -->
+            <%- post.content %>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <p class="text-center">&copy; 2024 My Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+    <!-- Font Awesome for Copy Icon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <!-- Copy to Clipboard Script -->
+    <script>
+        document.querySelectorAll('pre').forEach(pre => {
+            const code = pre.querySelector('code');
+            if (code) {
+                const button = document.createElement('button');
+                button.className = 'copy-button';
+                button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                pre.classList.add('code-container');
+                pre.appendChild(button);
+
+                button.addEventListener('click', () => {
+                    navigator.clipboard.writeText(code.textContent).then(() => {
+                        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => {
+                            button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy code:', err);
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

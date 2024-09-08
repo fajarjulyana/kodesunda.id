@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- TinyMCE -->
+    <script src="https://cdn.tiny.cloud/1/ktjqtn97l51fscb4iu879v7cpgm7iw1mf7exrme3ecbs96ep/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .create-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .create-container.dark-mode {
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 25px;
+            border: 1px solid #ced4da;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-create {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            border-radius: 25px;
+            width: 100%;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn-create:hover {
+            background-color: #0056b3;
+        }
+
+        .dark-mode-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #343a40;
+            transition: color 0.3s;
+        }
+
+        .dark-mode-toggle.dark-mode {
+            color: #f8f9fa;
+        }
+
+        .dark-mode-toggle i {
+            transition: transform 0.3s;
+        }
+
+        .dark-mode-toggle i.fa-sun {
+            transform: rotate(-180deg);
+        }
+    </style>
+    <script>
+        tinymce.init({
+            selector: '#editor',
+            plugins: 'codesample advlist autolink lists link image charmap preview anchor textcolor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
+            toolbar: 'undo redo | bold italic underline | fontselect fontsizeselect | forecolor backcolor | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link image | codesample | removeformat | help',
+            menubar: false,
+            height: 500,
+            setup: function (editor) {
+                editor.on('change', function () {
+                    editor.save();
+                });
+            }
+        });
+
+        function toggleDarkMode() {
+            const body = document.body;
+            const createContainer = document.querySelector('.create-container');
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+
+            createContainer.classList.toggle('dark-mode');
+            createContainer.classList.toggle('light-mode');
+
+            darkModeToggle.classList.toggle('dark-mode');
+            darkModeToggle.classList.toggle('light-mode');
+
+            const icon = document.querySelector('.dark-mode-toggle i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+    </script>
+</head>
+
+<body class="light-mode">
+
+    <div class="dark-mode-toggle light-mode" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <div class="create-container light-mode">
+        <h1>Create New Post</h1>
+        <!-- Form diperbarui untuk mendukung upload file -->
+        <form action="/posts/create" method="POST" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Post Title" required class="form-control">
+            <!-- Input file untuk thumbnail -->
+            <input type="file" name="thumbnail" accept="image/*" class="form-control">
+            <textarea name="content" id="editor" required class="form-control"></textarea>
+            <button type="submit" class="btn-create">Create Post</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

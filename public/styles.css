@@ -1,0 +1,170 @@
+/* Style untuk body */
+body {
+    background-color: #271e17; /* Warna latar belakang halaman */
+    margin: 0; /* Menghilangkan margin default */
+    font-family: Arial, sans-serif; /* Menetapkan font default */
+}
+
+/* Style untuk hero section */
+.hero-section {
+    background-color: #271e17; /* Warna latar belakang hero section */
+    color: white; /* Warna teks di hero section */
+    height: 100vh; /* Tinggi hero section */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Menyelaraskan konten secara vertikal */
+    text-align: center; /* Menyelaraskan teks secara horizontal */
+}
+
+/* Style untuk hero content */
+.hero-content h1 {
+    font-size: 3rem; /* Ukuran font judul hero */
+    font-weight: bold; /* Ketebalan font judul hero */
+}
+
+.hero-content p {
+    font-size: 1.25rem; /* Ukuran font paragraf hero */
+    margin-bottom: 1.5rem; /* Jarak bawah paragraf hero */
+}
+
+/* Style untuk hero image */
+.hero-image img {
+    max-width: 100%; /* Lebar maksimum gambar hero */
+    height: auto; /* Tinggi gambar otomatis untuk menjaga proporsi */
+}
+
+/* Button Styles */
+.btn-teal, .btn-outline-teal {
+    padding: 10px 20px; /* Padding tombol */
+    border-radius: 5px; /* Sudut melengkung pada tombol */
+    text-align: center; /* Menyelaraskan teks tombol */
+    display: inline-block; /* Menyusun tombol dalam baris */
+    font-size: 1rem; /* Ukuran font tombol */
+    cursor: pointer; /* Menambahkan pointer saat hover */
+}
+
+.btn-teal {
+    background-color: #4e3a20; /* Warna latar belakang tombol */
+    border: none; /* Menghapus border tombol */
+    color: white; /* Warna teks tombol */
+}
+
+.btn-outline-teal {
+    color: #c7c7c7; /* Warna teks tombol outline */
+    border: 2px solid #4e3a20; /* Warna border tombol outline */
+}
+
+.btn-outline-teal:hover {
+    background-color: #4e3a20; /* Warna latar belakang tombol outline saat hover */
+    color: #c7c7c7; /* Warna teks tombol outline saat hover */
+}
+
+/* Navbar Link Styles */
+.navbar .nav-link {
+    color: white; /* Warna teks link navbar */
+    text-decoration: none; /* Menghilangkan garis bawah pada link */
+}
+
+.navbar .nav-link:hover {
+    color: #20C997; /* Warna teks link navbar saat hover */
+}
+
+/* Container untuk card */
+.custom-container {
+    display: flex;
+    justify-content: center; /* Untuk membuat posisi card ke tengah secara horizontal */
+    align-items: center; /* Untuk membuat posisi card ke tengah secara vertikal */
+    height: auto; /* Tinggi container otomatis sesuai konten */
+    flex-wrap: wrap; /* Memungkinkan card untuk membungkus jika layar kecil */
+    padding: 20px; /* Padding sekitar container */
+}
+
+/* Style untuk card gambar */
+.card-img-top {
+    width: 100%; /* Lebar gambar card */
+    height: 200px; /* Tinggi gambar card */
+    object-fit: cover; /* Memastikan gambar sesuai dengan ukuran card */
+    margin-bottom: 15px; /* Jarak bawah gambar card */
+}
+
+/* Menambahkan efek hover pada card */
+.card {
+    background-color: #4e3a20;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Pastikan transisi ini ada */
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    padding: 12px 20px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan shadow default */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Efek zoom saat hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Shadow lebih besar saat hover */
+}
+
+/* Mengatur ukuran card agar seragam */
+.custom-container .card {
+    display: flex; /* Menggunakan flexbox untuk card */
+    flex-direction: column; /* Mengatur card dalam kolom */
+}
+
+/* Memberikan jarak margin ke kanan dan kiri pada card */
+.custom-container .col-md-4 {
+    padding-left: 15px; /* Jarak margin kiri */
+    padding-right: 15px; /* Jarak margin kanan */
+}
+
+/* Style untuk footer */
+.footer {
+    background-color: #4e3a20; /* Warna latar belakang footer */
+    color: white; /* Warna teks footer */
+    padding: 20px 0; /* Padding pada atas dan bawah footer */
+    text-align: center; /* Menyelaraskan teks footer ke tengah */
+}
+
+/* Menambahkan responsivitas untuk elemen footer */
+.footer a {
+    color: #20C997; /* Warna link di footer */
+    text-decoration: none; /* Menghilangkan garis bawah pada link */
+}
+
+.footer a:hover {
+    color: #c7c7c7; /* Warna link saat hover di footer */
+}
+
+/* Media Queries untuk Responsivitas */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem; /* Mengurangi ukuran font judul pada layar kecil */
+    }
+
+    .hero-content p {
+        font-size: 1rem; /* Mengurangi ukuran font paragraf pada layar kecil */
+    }
+
+    .custom-container {
+        flex-direction: column; /* Card akan disusun dalam kolom pada layar kecil */
+    }
+
+    .card {
+        max-width: 100%; /* Lebar card menyesuaikan ukuran layar */
+        margin: 10px 0; /* Jarak vertikal antara card */
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 1.5rem; /* Mengurangi ukuran font judul lebih lanjut pada layar sangat kecil */
+    }
+
+    .hero-content p {
+        font-size: 0.875rem; /* Mengurangi ukuran font paragraf lebih lanjut pada layar sangat kecil */
+    }
+
+    .footer {
+        padding: 15px 0; /* Mengurangi padding footer pada layar sangat kecil */
+    }
+}
