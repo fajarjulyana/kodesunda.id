@@ -44,11 +44,21 @@ app.get('/', (req, res) => {
     res.redirect('/posts');
 });
 
-// Rute untuk menampilkan semua post
+// Rute untuk menampilkan semua post dengan pagination
 app.get('/posts', async (req, res) => {
+    const page = parseInt(req.query.page) || 1; // Mendapatkan page dari query string, default 1
+    const limit = 6; // Menampilkan 6 post per halaman
+    const offset = (page - 1) * limit; // Menghitung offset berdasarkan page
+    
     try {
-        const posts = await Post.findAll({ order: [['createdAt', 'DESC']] });
-        res.render('posts', { posts });
+        const { count, rows: posts } = await Post.findAndCountAll({
+            order: [['createdAt', 'DESC']],
+            limit,
+            offset
+        });
+        
+        const totalPages = Math.ceil(count / limit); // Menghitung total halaman
+        res.render('posts', { posts, currentPage: page, totalPages });
     } catch (err) {
         console.error(err);
         res.status(500).send('Error fetching posts');

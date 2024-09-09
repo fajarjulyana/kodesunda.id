@@ -117,6 +117,30 @@ body {
     padding-right: 15px; /* Jarak margin kanan */
 }
 
+/* Kustomisasi warna pagination */
+.custom-pagination {
+    color: #4e3a20; /* Warna teks */
+    background-color: #f8f9fa; /* Warna latar belakang */
+    border-color: #dee2e6; /* Warna border */
+}
+
+.custom-pagination:hover {
+    color: white; /* Warna teks saat di-hover */
+    background-color: #4e3a20; /* Warna latar belakang saat di-hover */
+}
+
+.custom-active {
+    background-color: #4e3a20; /* Warna latar belakang untuk halaman aktif */
+    color: white; /* Warna teks halaman aktif */
+    border-color: #4e3a20; /* Warna border halaman aktif */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #4e3a20 !important; /* Warna halaman aktif dengan Bootstrap */
+    border-color: #4e3a20 !important; /* Warna border halaman aktif dengan Bootstrap */
+}
+
+
 /* Style untuk footer */
 .footer {
     background-color: #4e3a20; /* Warna latar belakang footer */
