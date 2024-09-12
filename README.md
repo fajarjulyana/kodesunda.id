@@ -1,4 +1,5 @@
 # blog-app-nodejs-mysql
+
 <img src="capture/capture-1.png">
 
 # Blog Application
@@ -16,12 +17,14 @@ This is a simple blog application built using Node.js, Express, Sequelize, and M
 ## Installation
 
 1. **Clone the repository:**
+
    ```bash
-   git clone https://github.com/fajarjulyana/blog-app-nodejs-mysql-native.git
-   cd blog-app-nodejs-mysql-native
+   git clone https://github.com/fajarjulyana/kodesunda.id.git
+   cd kodesunda.id
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```
@@ -44,18 +47,20 @@ This is a simple blog application built using Node.js, Express, Sequelize, and M
 4. **Configure the database:**
 
    - Ensure that the `config/database.js` file contains the correct MySQL configuration:
-     ```javascript
-     const { Sequelize } = require('sequelize');
 
-     const sequelize = new Sequelize('blogdb', 'root', '', {
-         host: 'localhost',
-         dialect: 'mysql'
+     ```javascript
+     const { Sequelize } = require("sequelize");
+
+     const sequelize = new Sequelize("blogdb", "root", "", {
+       host: "localhost",
+       dialect: "mysql",
      });
 
      module.exports = sequelize;
      ```
 
 5. **Run the application:**
+
    ```bash
    npm start
    ```
